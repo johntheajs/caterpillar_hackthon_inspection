@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'complaints.dart';
 
 void main() {
   runApp(const MyApp());
@@ -52,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
     if (_pageController.page!.toInt() == checklistItems.length - 1) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => ComplaintScreen()),
+        MaterialPageRoute(builder: (context) => ComplaintsScreen()),
       );
     } else {
       _pageController.nextPage(
@@ -72,6 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: PageView.builder(
         controller: _pageController,
         itemCount: checklistItems.length,
+        physics: NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
           final item = checklistItems[index];
           return Center(
@@ -118,16 +120,4 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class ComplaintScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Complaint Cards'),
-      ),
-      body: Center(
-        child: Text('Display Complaint Cards Here'),
-      ),
-    );
-  }
-}
+
